@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<style>
+    table, th, td {
+  border:1px solid black;
+}
+    button{
+       
+
+        width: 50px;
+        height: 50px;
+    }
+</style>
+</head>
+<body>
+    <!-- 
+        
+        soru1
+
+        <div id="Btn" onclick="genisle()">
+        <button>Right</button><hr>
+        <button  >Right</button><hr>
+        <button>Right</button><hr>
+        <button >Right</button><hr>
+        <button>Right</button><hr>
+
+        
+    </div> -->
+
+    <!-- <h1></h1> soru-2
+
+    <input type="text" id="inputType"> -->
+
+    <!-- <h1>H1 basligi</h1>
+        SORU-3
+    
+        <label for="s1">Bir Secenek Secer Misin</label>
+        <select id="s1">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>  -->
+        <!-- soru5 
+            <ul id="ul">
+            <li>li</li>
+            <li>li</li>
+            <li>li</li>
+            <li>li</li>
+            <li>li</li>
+        </ul>
+    
+        <label for="input">What's the Content?</label>
+        <input type="text" id="input">
+        <button>Add to List</button> -->
+        <div> <h1 id="h1"></h1></div>
+        <table id="productTable">
+            <tr>
+                <th>
+                    id:
+                </th>
+                <th>
+                    supplierId:
+                </th>
+                <th>
+                    categoryId:
+                </th>
+                <th>
+                    quantityPerUnit:
+                </th>
+                <th>
+                    unitPrice:
+                </th>
+                <th>
+                    unitsInStock:
+                </th>
+                <th>
+                    unitsOnOrder:
+                </th>
+                <th>
+                    reorderLevel:
+                </th>
+                <th>
+                    discontinued:
+                </th>
+                <th>
+                    name:
+                </th>
+            </tr>
+        </table>
+</body>
+
+<script>
+//   var Marginright=0; soru-1
+//  $("button").click(function(){
+
+//     Marginright +=10;
+// $("button").css("margin-left", Marginright + "px")
+//  })
+
+// $("#inputType").keypress(function(){
+//     var ex =$(this).val();
+//     $("h1").text(ex);
+    //soru2
+// });
+
+// $("#s1").change(function () {
+    //SORU-3 JS
+//         var v = $(this).val();
+//         $("h1").text(v);
+//     });
+
+// $("button").click(function () {
+//         var v = $("#input").val();
+//soru5
+//         $("#ul").append("<li>" + v + "</li>");
+//     });
+$(document).ready(function() {
+
+$.ajax({
+
+url: 'https://northwind.vercel.app/api/products',
+
+type: 'GET',
+
+data: { format: 'json' },
+
+success: function(data) {
+
+data.map((item)=>{
+        var newTr = document.createElement('tr');
+        var th1 = document.createElement('th');
+        th1.innerHTML = item.id;
+        var th2 = document.createElement('th');
+        th2.innerHTML = item.supplierId;
+        var th3 = document.createElement('th');
+        th3.innerHTML = item.categoryId;
+        var th4 = document.createElement('th');
+        th4.innerHTML = item.quantityPerUnit;
+        var th5 = document.createElement('th');
+        th5.innerHTML = item.unitPrice;
+        var th6 = document.createElement('th');
+        th6.innerHTML = item.unitsInStock;
+        var th7 = document.createElement('th');
+        th7.innerHTML = item.unitsOnOrder;
+        var th8 = document.createElement('th');
+        th8.innerHTML = item.reorderLevel;
+        var th9 = document.createElement('th');
+        th9.innerHTML = item.discontinued;
+        var th10 = document.createElement('th');
+        th10.innerHTML = item.name;
+
+        newTr.appendChild(th1);
+        newTr.appendChild(th2);
+        newTr.appendChild(th3);
+        newTr.appendChild(th4);
+        newTr.appendChild(th5);
+        newTr.appendChild(th6);
+        newTr.appendChild(th7);
+        newTr.appendChild(th8);
+        newTr.appendChild(th9);
+        newTr.appendChild(th10);
+
+        document.getElementById('productTable').appendChild(newTr);
+})
+
+},
+
+});
+
+});
+
+</script>
+</html>
